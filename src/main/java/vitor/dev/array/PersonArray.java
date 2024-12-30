@@ -16,4 +16,31 @@ public class PersonArray extends MyArray {
             throw new IllegalArgumentException();
         }
     }
+
+    @Override
+    public void remove(Model model) {
+        if (model instanceof Person) {
+            super.remove(model);
+        } else {
+            throw new IllegalArgumentException();
+        }
+    }
+
+    @Override
+    public boolean search(Model model) {
+        if (model instanceof Person) {
+            return super.search(model);
+        } else {
+            throw new IllegalArgumentException();
+        }
+    }
+
+    @Override
+    public void update(int position, Model model) {
+        if (model instanceof Person) {
+            super.update(position, model);
+        } else {
+            throw new IllegalArgumentException();
+        }
+    }
 }

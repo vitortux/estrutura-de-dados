@@ -9,19 +9,20 @@ public class MyArray {
         this.items = new Model[size];
     }
 
+    public Model[] getItems() {
+        return items;
+    }
+
     public void insert(int position, Model model) {
         items[position] = model;
     }
 
-    public boolean remove(Model model) {
+    public void remove(Model model) {
         for (int i = 0; i < items.length; i++) {
             if (items[i] != null && items[i] == model) {
                 items[i] = null;
-                return true;
             }
         }
-
-        return false;
     }
 
     public boolean search(Model model) {
@@ -58,12 +59,9 @@ public class MyArray {
         }
     }
 
-    public boolean update(int position, Model model) {
+    public void update(int position, Model model) {
         if (items[position] != null) {
             items[position] = model;
-            return true;
         }
-
-        return false;
     }
 }
