@@ -7,8 +7,4 @@ public class Person extends Model {
         super(id);
         this.name = name;
     }
-
-    public String getName() {
-        return name;
-    }
 }
