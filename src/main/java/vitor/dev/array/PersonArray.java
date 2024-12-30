@@ -18,9 +18,9 @@ public class PersonArray extends MyArray {
     }
 
     @Override
-    public void remove(Model model) {
+    public boolean remove(Model model) {
         if (model instanceof Person) {
-            super.remove(model);
+            return super.remove(model);
         } else {
             throw new IllegalArgumentException();
         }
@@ -36,9 +36,9 @@ public class PersonArray extends MyArray {
     }
 
     @Override
-    public void update(int position, Model model) {
+    public boolean update(int position, Model model) {
         if (model instanceof Person) {
-            super.update(position, model);
+            return super.update(position, model);
         } else {
             throw new IllegalArgumentException();
         }

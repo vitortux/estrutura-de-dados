@@ -17,17 +17,20 @@ public class MyArray {
         items[position] = model;
     }
 
-    public void remove(Model model) {
+    public boolean remove(Model model) {
         for (int i = 0; i < items.length; i++) {
-            if (items[i] != null && items[i] == model) {
+            if (items[i] == model) {
                 items[i] = null;
+                return true;
             }
         }
+
+        return false;
     }
 
     public boolean search(Model model) {
         for (Model item : items) {
-            if (item != null && item == model) {
+            if (item == model) {
                 return true;
             }
         }
@@ -59,9 +62,12 @@ public class MyArray {
         }
     }
 
-    public void update(int position, Model model) {
+    public boolean update(int position, Model model) {
         if (items[position] != null) {
             items[position] = model;
+            return true;
         }
+
+        return false;
     }
 }
