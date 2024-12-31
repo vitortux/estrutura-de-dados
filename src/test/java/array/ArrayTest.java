@@ -1,9 +1,7 @@
 package array;
 
 import static org.junit.jupiter.api.Assertions.assertArrayEquals;
-
-import java.util.Arrays;
-import java.util.Collections;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -24,19 +22,35 @@ class ArrayTest {
 			ascArray.insert(i, new Model(i));
 			descArray.insert(i, new Model(9 - i));
 		}
-
-		Collections.shuffle(Arrays.asList(array.getItems()));
 	}
 
 	@Test
 	void shouldOrderAsc() {
+		array.shuffle();
 		array.orderByIdAsc();
 		assertArrayEquals(ascArray.getItems(), array.getItems());
 	}
 
 	@Test
 	void shouldOrderDesc() {
+		array.shuffle();
 		array.orderByIdDesc();
 		assertArrayEquals(descArray.getItems(), array.getItems());
+	}
+
+	@Test
+	void shouldShuffleArray() {
+		Model[] originalArray = array.getItems().clone();
+		array.shuffle();
+
+		int shuffledPositions = 0;
+
+		for (int i = 0; i < originalArray.length; i++) {
+			if (originalArray[i] != array.getItems()[i]) {
+				shuffledPositions++;
+			}
+		}
+
+		assertTrue(shuffledPositions > 0);
 	}
 }
