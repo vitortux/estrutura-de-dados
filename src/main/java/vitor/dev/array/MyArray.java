@@ -1,12 +1,16 @@
 package vitor.dev.array;
 
+import java.util.Random;
+
 import vitor.dev.model.Model;
 
 public class MyArray {
-	Model[] items;
+	private Model[] items;
+	private Random random;
 
 	public MyArray(int size) {
 		this.items = new Model[size];
+		this.random = new Random();
 	}
 
 	public Model[] getItems() {
@@ -69,5 +73,14 @@ public class MyArray {
 		}
 
 		return false;
+	}
+
+	public void shuffle() {
+		for (int i = items.length - 1; i > 0; i--) {
+			int randomIndexToSwap = random.nextInt(i + 1);
+			Model temp = items[randomIndexToSwap];
+			items[randomIndexToSwap] = items[i];
+			items[i] = temp;
+		}
 	}
 }
