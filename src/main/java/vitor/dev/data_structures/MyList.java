@@ -1,10 +1,9 @@
 package vitor.dev.data_structures;
 
-import java.util.Collection;
 import java.util.Iterator;
-import java.util.ListIterator;
+import java.util.NoSuchElementException;
 
-public class MyList<T> {
+public class MyList<T> implements Iterable<T> {
     private Object[] items;
     private int size;
 
@@ -46,9 +45,23 @@ public class MyList<T> {
         return indexOf(o) >= 0;
     }
 
-    public Iterator iterator() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'iterator'");
+    public Iterator<T> iterator() {
+        return new Iterator<T>() {
+            private int currentIndex = 0;
+
+            @Override
+            public boolean hasNext() {
+                return currentIndex < size;
+            }
+
+            @Override
+            public T next() {
+                if (!hasNext()) {
+                    throw new NoSuchElementException();
+                }
+                return (T) items[currentIndex++];
+            }
+        };
     }
 
     public Object[] toArray() {
@@ -82,16 +95,25 @@ public class MyList<T> {
     }
 
     public boolean remove(Object o) {
-        for (int i = 0; i < size; i++) {
-            if ((o == null && items[i] == null) || (o != null && o.equals(items[i]))) {
-                remove(i);
-                return true;
+        if (o == null) {
+            for (int i = 0; i < size; i++) {
+                if (items[i] == null) {
+                    remove(i);
+                    return true;
+                }
+            }
+        } else {
+            for (int i = 0; i < size; i++) {
+                if (o.equals(items[i])) {
+                    remove(i);
+                    return true;
+                }
             }
         }
         return false;
     }
 
-    public boolean containsAll(Collection c) {
+    public boolean containsAll(MyList c) {
         for (Object item : c) {
             if (!contains(item)) {
                 return false;
@@ -101,7 +123,7 @@ public class MyList<T> {
         return true;
     }
 
-    public boolean addAll(Collection c) {
+    public boolean addAll(MyList c) {
         for (Object item : c) {
             add((T) item);
         }
@@ -109,7 +131,7 @@ public class MyList<T> {
         return containsAll(c);
     }
 
-    public boolean addAll(int index, Collection c) {
+    public boolean addAll(int index, MyList c) {
         if (c == null || c.isEmpty()) {
             return false;
         }
@@ -134,7 +156,7 @@ public class MyList<T> {
         return true;
     }
 
-    public boolean removeAll(Collection c) {
+    public boolean removeAll(MyList c) {
         boolean removed = false;
 
         for (Object item : c) {
@@ -145,7 +167,7 @@ public class MyList<T> {
         return removed;
     }
 
-    public boolean retainAll(Collection c) {
+    public boolean retainAll(MyList c) {
         boolean modified = false;
 
         for (int i = 0; i < size; i++) {
@@ -235,15 +257,13 @@ public class MyList<T> {
         return -1;
     }
 
-    public ListIterator listIterator() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'listIterator'");
-    }
+    // public ListIterator listIterator() {
+    // return listIterator(0);
+    // }
 
-    public ListIterator listIterator(int index) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'listIterator'");
-    }
+    // public ListIterator listIterator(int index) {
+
+    // }
 
     public MyList<T> subList(int fromIndex, int toIndex) {
         MyList<T> subList = new MyList<>();
