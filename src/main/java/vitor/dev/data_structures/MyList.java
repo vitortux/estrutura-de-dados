@@ -82,19 +82,10 @@ public class MyList<T> {
     }
 
     public boolean remove(Object o) {
-        if (o == null) {
-            for (int i = 0; i < size; i++) {
-                if (items[i] == null) {
-                    remove(i);
-                    return true;
-                }
-            }
-        } else {
-            for (int i = 0; i < size; i++) {
-                if (o.equals(items[i])) {
-                    remove(i);
-                    return true;
-                }
+        for (int i = 0; i < size; i++) {
+            if ((o == null && items[i] == null) || (o != null && o.equals(items[i]))) {
+                remove(i);
+                return true;
             }
         }
         return false;
