@@ -1,9 +1,9 @@
 package vitor.dev.model;
 
-public class Person extends Model {
+public class Pessoa extends Model {
     String name;
 
-    public Person(int id, String name) {
+    public Pessoa(int id, String name) {
         super(id);
         this.name = name;
     }

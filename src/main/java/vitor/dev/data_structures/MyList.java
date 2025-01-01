@@ -2,7 +2,6 @@ package vitor.dev.data_structures;
 
 import java.util.Iterator;
 import java.util.NoSuchElementException;
-import java.util.HashMap;
 
 public class MyList<T> implements Iterable<T> {
     private Object[] items;

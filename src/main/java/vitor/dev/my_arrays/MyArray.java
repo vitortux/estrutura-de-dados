@@ -1,4 +1,4 @@
-package vitor.dev.array;
+package vitor.dev.my_arrays;
 
 import java.util.Random;
 
