@@ -174,6 +174,7 @@ public class MyList<T> implements Iterable<T> {
         for (int i = 0; i < size; i++) {
             items[i] = null;
         }
+
         size = 0;
     }
 
