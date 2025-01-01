@@ -88,7 +88,7 @@ class MyListTest {
     @Test
     void shouldReturnFalseWhenNotAllElementsArePresent() {
         MyList<Model> collection = new MyList<>();
-        collection.add(new Model(1));
+        collection.add(new Model(11));
         collection.add(new Model(22));
 
         assertFalse(myList.containsAll(collection));
@@ -117,7 +117,7 @@ class MyListTest {
     }
 
     @Test
-    void testRemoveAllSomeItems() {
+    void shouldRemoveAllItemsPresentOnList() {
         MyList<Model> collection = new MyList<>();
         collection.add(new Model(1));
         collection.add(new Model(3));
@@ -127,7 +127,7 @@ class MyListTest {
     }
 
     @Test
-    void testRemoveAllNoItemsToRemove() {
+    void shouldNotRemoveItemsNotPresentOnList() {
         MyList<Model> collection = new MyList<>();
         collection.add(new Model(100));
 

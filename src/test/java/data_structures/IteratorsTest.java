@@ -13,46 +13,63 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import vitor.dev.data_structures.MyList;
+import vitor.dev.data_structures.MySet;
 import vitor.dev.model.Model;
 
-class IteratorTest {
+class IteratorsTest {
 
     private MyList<Model> myList;
+    private MySet<Integer> mySet;
+
+    private Iterator<Model> myListIterator;
+    private Iterator<Integer> mySetIterator;
 
     @BeforeEach
     void setUp() {
         myList = new MyList<>();
+        mySet = new MySet<>();
+
+        myListIterator = myList.iterator();
+        mySetIterator = mySet.iterator();
 
         for (int i = 0; i < 10; i++) {
             myList.add(new Model(i));
+            mySet.add(i);
         }
     }
 
     @Test
     void shouldHaveNext() {
-        Iterator<Model> iterator = myList.iterator();
-        assertTrue(iterator.hasNext());
+        assertTrue(myListIterator.hasNext());
+        assertTrue(mySetIterator.hasNext());
     }
 
     @Test
     void shouldReturnNextElement() {
-        Iterator<Model> iterator = myList.iterator();
-        Model model = iterator.next();
+        Model model = myListIterator.next();
+        Integer integer = mySetIterator.next();
+
         assertNotNull(model);
         assertEquals(myList.get(0), model);
+
+        assertNotNull(integer);
     }
 
     @Test
     void shouldNotHaveNext() {
-        Iterator<Model> iterator = myList.iterator();
         myList.clear();
-        assertFalse(iterator.hasNext());
+        mySet.clear();
+
+        assertFalse(myListIterator.hasNext());
+        assertFalse(mySetIterator.hasNext());
     }
 
     @Test
     void shouldNotReturnNext() {
-        Iterator<Model> iterator = myList.iterator();
         myList.clear();
-        assertThrows(NoSuchElementException.class, iterator::next);
+        mySet.clear();
+
+        assertThrows(NoSuchElementException.class, myListIterator::next);
+        assertThrows(NoSuchElementException.class, mySetIterator::next);
     }
 }
