@@ -1,4 +1,4 @@
-package array;
+package my_arrays;
 
 import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -6,7 +6,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import vitor.dev.array.MyArray;
+import vitor.dev.my_arrays.MyArray;
 import vitor.dev.model.Model;
 
 class ArrayTest {

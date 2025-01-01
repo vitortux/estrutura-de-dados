@@ -276,4 +276,9 @@ class MyListTest {
         myList.clear();
         assertEquals(-1, myList.lastIndexOf(new Model(1)));
     }
+
+    @Test
+    void shouldReturnMinusOneForNotPresentElement() {
+        assertEquals(-1, myList.lastIndexOf(new Model(100)));
+    }
 }
