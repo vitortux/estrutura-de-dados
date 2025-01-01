@@ -1,13 +1,15 @@
 package my_arrays;
 
 import static org.junit.jupiter.api.Assertions.assertArrayEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+
+import java.util.Arrays;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import vitor.dev.my_arrays.MyArray;
 import vitor.dev.model.Model;
+import vitor.dev.my_arrays.MyArray;
 
 class ArrayTest {
 
@@ -41,16 +43,11 @@ class ArrayTest {
 	@Test
 	void shouldShuffleArray() {
 		Model[] originalArray = array.getItems().clone();
+
+		assertArrayEquals(originalArray, array.getItems());
+
 		array.shuffle();
 
-		int shuffledPositions = 0;
-
-		for (int i = 0; i < originalArray.length; i++) {
-			if (originalArray[i] != array.getItems()[i]) {
-				shuffledPositions++;
-			}
-		}
-
-		assertTrue(shuffledPositions > 0);
+		assertFalse(Arrays.equals(originalArray, array.getItems()));
 	}
 }
