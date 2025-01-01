@@ -152,6 +152,7 @@ public class MyList<T> implements Iterable<T> {
                 removed = true;
             }
         }
+
         return removed;
     }
 
