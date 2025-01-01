@@ -171,10 +171,7 @@ public class MyList<T> implements Iterable<T> {
     }
 
     public void clear() {
-        for (int i = 0; i < size; i++) {
-            items[i] = null;
-        }
-
+        items = new Object[10];
         size = 0;
     }
 
