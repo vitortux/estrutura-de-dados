@@ -2,6 +2,7 @@ package vitor.dev.data_structures;
 
 import java.util.Iterator;
 import java.util.NoSuchElementException;
+import java.util.HashMap;
 
 public class MyList<T> implements Iterable<T> {
     private Object[] items;
@@ -74,18 +75,6 @@ public class MyList<T> implements Iterable<T> {
         return newArray;
     }
 
-    public Object[] toArray(Object[] a) {
-        if (a.length < size) {
-            a = new Object[size];
-        }
-
-        for (int i = 0; i < size; i++) {
-            a[i] = items[i];
-        }
-
-        return a;
-    }
-
     public boolean add(T e) {
         if (size == items.length) {
             grow();
@@ -113,7 +102,7 @@ public class MyList<T> implements Iterable<T> {
         return false;
     }
 
-    public boolean containsAll(MyList c) {
+    public boolean containsAll(MyList<T> c) {
         for (Object item : c) {
             if (!contains(item)) {
                 return false;
@@ -123,7 +112,7 @@ public class MyList<T> implements Iterable<T> {
         return true;
     }
 
-    public boolean addAll(MyList c) {
+    public boolean addAll(MyList<T> c) {
         for (Object item : c) {
             add((T) item);
         }
@@ -131,7 +120,7 @@ public class MyList<T> implements Iterable<T> {
         return containsAll(c);
     }
 
-    public boolean addAll(int index, MyList c) {
+    public boolean addAll(int index, MyList<T> c) {
         if (c == null || c.isEmpty()) {
             return false;
         }
@@ -156,7 +145,7 @@ public class MyList<T> implements Iterable<T> {
         return true;
     }
 
-    public boolean removeAll(MyList c) {
+    public boolean removeAll(MyList<T> c) {
         boolean removed = false;
 
         for (Object item : c) {
@@ -167,20 +156,19 @@ public class MyList<T> implements Iterable<T> {
         return removed;
     }
 
-    public boolean retainAll(MyList c) {
-        boolean modified = false;
+    public boolean retainAll(MyList<T> c) {
+        boolean removed = false;
 
-        for (int i = 0; i < size; i++) {
+        for (int i = size - 1; i >= 0; i--) {
             Object item = items[i];
 
             if (!c.contains(item)) {
                 remove(item);
-                modified = true;
-                i--;
+                removed = true;
             }
         }
 
-        return modified;
+        return removed;
     }
 
     public void clear() {
@@ -256,14 +244,6 @@ public class MyList<T> implements Iterable<T> {
         }
         return -1;
     }
-
-    // public ListIterator listIterator() {
-    // return listIterator(0);
-    // }
-
-    // public ListIterator listIterator(int index) {
-
-    // }
 
     public MyList<T> subList(int fromIndex, int toIndex) {
         MyList<T> subList = new MyList<>();
