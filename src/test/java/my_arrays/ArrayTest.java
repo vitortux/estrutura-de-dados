@@ -27,21 +27,21 @@ class ArrayTest {
 	}
 
 	@Test
-	void shouldOrderAsc() {
+	void deveriaOrdenarAscendente() {
 		array.shuffle();
 		array.orderByIdAsc();
 		assertArrayEquals(ascArray.getItems(), array.getItems());
 	}
 
 	@Test
-	void shouldOrderDesc() {
+	void deveriaOrdenarDescendente() {
 		array.shuffle();
 		array.orderByIdDesc();
 		assertArrayEquals(descArray.getItems(), array.getItems());
 	}
 
 	@Test
-	void shouldShuffleArray() {
+	void deveriaEmbaralharArray() {
 		Model[] originalArray = array.getItems().clone();
 
 		assertArrayEquals(originalArray, array.getItems());

@@ -10,7 +10,6 @@ import org.junit.jupiter.api.Test;
 
 import vitor.dev.model.Bicicleta;
 import vitor.dev.model.Model;
-import vitor.dev.model.Pessoa;
 import vitor.dev.my_arrays.BicicletaArray;
 
 class BicicletaArrayTest {
@@ -19,19 +18,19 @@ class BicicletaArrayTest {
 	private final Model model = new Model(2);
 
 	@Test
-	void shouldInsertPerson() {
+	void deveriaInserirBicicleta() {
 		array.insert(0, bicicleta);
 		assertNotNull(array.getItems()[0]);
 	}
 
 	@Test
-	void shouldNotInsertIncorrectModel() {
+	void naoDeveriaInserirModeloIncorreto() {
 		array.insert(0, model);
 		assertNull(array.getItems()[0]);
 	}
 
 	@Test
-	void shouldRemovePerson() {
+	void deveriaRemoverBicicleta() {
 		array.insert(0, bicicleta);
 		assertTrue(array.search(bicicleta));
 
@@ -41,45 +40,45 @@ class BicicletaArrayTest {
 	}
 
 	@Test
-	void shouldNotRemoveObjectNotPresentInArray() {
+	void naoDeveriaRemoverObjetoNaoPresenteNoArray() {
 		assertFalse(array.remove(bicicleta));
 	}
 
 	@Test
-	void shouldNotRemoveIncorrectModel() {
+	void naoDeveriaRemoverModeloIncorreto() {
 		assertFalse(array.remove(model));
 	}
 
 	@Test
-	void shouldReturnTrueForModelPresentInArray() {
+	void deveriaRetornarVerdadeiroParaModeloPresenteNoArray() {
 		array.insert(0, bicicleta);
 		assertTrue(array.search(bicicleta));
 	}
 
 	@Test
-	void shouldReturnFalseForModelNotPresentInArray() {
+	void deveriaRetornarFalsoParaModeloNaoPresenteNoArray() {
 		assertFalse(array.search(bicicleta));
 	}
 
 	@Test
-	void shouldReturnFalseWhenSearchingForIncorrectModelType() {
+	void deveriaRetornarFalsoAoBuscarTipoDeModeloIncorreto() {
 		assertFalse(array.search(model));
 	}
 
 	@Test
-	void shouldReturnTrueForUpdatedPerson() {
+	void deveriaRetornarVerdadeiroParaBicicletaAtualizada() {
 		array.insert(0, bicicleta);
 		assertTrue(array.update(0, new Bicicleta(22, "name")));
 		assertNotEquals(bicicleta, array.getItems()[0]);
 	}
 
 	@Test
-	void shouldReturnFalseWhenUpdatingModelNotPresentOnArray() {
+	void deveriaRetornarFalsoAoAtualizarModeloNaoPresenteNoArray() {
 		assertFalse(array.update(0, bicicleta));
 	}
 
 	@Test
-	void shouldReturnFalseWhenUpdatingIncorrectModelType() {
+	void deveriaRetornarFalsoAoAtualizarTipoDeModeloIncorreto() {
 		assertFalse(array.update(0, model));
 	}
 }

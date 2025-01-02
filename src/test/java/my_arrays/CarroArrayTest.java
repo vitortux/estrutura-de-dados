@@ -8,9 +8,9 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import org.junit.jupiter.api.Test;
 
-import vitor.dev.my_arrays.CarroArray;
 import vitor.dev.model.Carro;
 import vitor.dev.model.Model;
+import vitor.dev.my_arrays.CarroArray;
 
 class CarroArrayTest {
     private final CarroArray array = new CarroArray(10);
@@ -18,19 +18,19 @@ class CarroArrayTest {
     private final Model model = new Model(2);
 
     @Test
-    void shouldInsertCarro() {
+    void deveriaInserirCarro() {
         array.insert(0, carro);
         assertNotNull(array.getItems()[0]);
     }
 
     @Test
-    void shouldNotInsertIncorrectModel() {
+    void naoDeveriaInserirModeloIncorreto() {
         array.insert(0, model);
         assertNull(array.getItems()[0]);
     }
 
     @Test
-    void shouldRemoveCar() {
+    void deveriaRemoverCarro() {
         array.insert(0, carro);
         assertTrue(array.search(carro));
 
@@ -40,45 +40,45 @@ class CarroArrayTest {
     }
 
     @Test
-    void shouldNotRemoveObjectNotPresentInArray() {
+    void naoDeveriaRemoverObjetoNaoPresenteNoArray() {
         assertFalse(array.remove(carro));
     }
 
     @Test
-    void shouldNotRemoveIncorrectModel() {
+    void naoDeveriaRemoverModeloIncorreto() {
         assertFalse(array.remove(model));
     }
 
     @Test
-    void shouldReturnTrueForModelPresentInArray() {
+    void deveriaRetornarVerdadeiroParaModeloPresenteNoArray() {
         array.insert(0, carro);
         assertTrue(array.search(carro));
     }
 
     @Test
-    void shouldReturnFalseForModelNotPresentInArray() {
+    void deveriaRetornarFalsoParaModeloNaoPresenteNoArray() {
         assertFalse(array.search(carro));
     }
 
     @Test
-    void shouldReturnFalseWhenSearchingForIncorrectModelType() {
+    void deveriaRetornarFalsoAoBuscarTipoDeModeloIncorreto() {
         assertFalse(array.search(model));
     }
 
     @Test
-    void shouldReturnTrueForUpdatedCarro() {
+    void deveriaRetornarVerdadeiroParaCarroAtualizado() {
         array.insert(0, carro);
         assertTrue(array.update(0, new Carro(22, "name")));
         assertNotEquals(carro, array.getItems()[0]);
     }
 
     @Test
-    void shouldReturnFalseWhenUpdatingModelNotPresentOnArray() {
+    void deveriaRetornarFalsoAoAtualizarModeloNaoPresenteNoArray() {
         assertFalse(array.update(0, carro));
     }
 
     @Test
-    void shouldReturnFalseWhenUpdatingIncorrectModelType() {
+    void deveriaRetornarFalsoAoAtualizarTipoDeModeloIncorreto() {
         assertFalse(array.update(0, model));
     }
 }

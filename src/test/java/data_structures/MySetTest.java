@@ -23,31 +23,31 @@ class MySetTest {
     }
 
     @Test
-    void shouldGrowWhenReachingDefaultCapacity() {
+    void deveriaCrescerAoAlcançarCapacidadeDefault() {
         mySet.add(11);
         assertEquals(11, mySet.size());
     }
 
     @Test
-    void shouldNotGrowWhenReachingDefaultCapacity() {
+    void naoDeveriaCrescerAoAlcancarCapacidadeDefault() {
         mySet.add(1);
         assertEquals(10, mySet.size());
     }
 
     @Test
-    void currentListShouldNotBeEmpty() {
+    void listaAtualNaoDeveriaEstarVazia() {
         assertFalse(mySet.isEmpty());
     }
 
     @Test
-    void shouldClearList() {
+    void deveriaLimparLista() {
         mySet.clear();
         assertEquals(0, mySet.size());
         assertTrue(mySet.isEmpty());
     }
 
     @Test
-    void shouldRemoveObject() {
+    void deveriaRemoverObjeto() {
         assertTrue(mySet.remove(6));
 
         mySet.add(11);
@@ -55,13 +55,13 @@ class MySetTest {
     }
 
     @Test
-    void shouldNotRemoveOnEmptySet() {
+    void naoDeveriaRemoverEmConjuntoVazio() {
         mySet.clear();
         assertFalse(mySet.remove(1));
     }
 
     @Test
-    void shouldReturnTrueWhenAllElementsArePresent() {
+    void deveriaRetornarVerdadeiroQuandoTodosElementosEstiveremPresentes() {
         MySet<Integer> collection = new MySet<>();
         collection.add(1);
         collection.add(2);
@@ -70,7 +70,7 @@ class MySetTest {
     }
 
     @Test
-    void shouldReturnFalseWhenNotAllElementsArePresent() {
+    void deveriaRetornarFalsoQuandoNemTodosElementosEstiveremPresentes() {
         MySet<Integer> collection = new MySet<>();
         collection.add(11);
         collection.add(22);
@@ -79,7 +79,7 @@ class MySetTest {
     }
 
     @Test
-    void shouldAddAllElementsToMyList() {
+    void deveriaAdicionarTodosElementosAoMeuConjunto() {
         MySet<Integer> collection = new MySet<>();
         collection.add(12);
         collection.add(22);
@@ -91,7 +91,7 @@ class MySetTest {
     }
 
     @Test
-    void shouldNotAddDuplicateElementsToMyList() {
+    void naoDeveriaAdicionarElementosDuplicadosAoMeuConjunto() {
         MySet<Integer> collection = new MySet<>();
         collection.add(1);
         collection.add(22);
@@ -103,7 +103,7 @@ class MySetTest {
     }
 
     @Test
-    void shouldRemoveAllItemsPresentOnList() {
+    void deveriaRemoverTodosItensPresentesNaLista() {
         MySet<Integer> collection = new MySet<>();
         collection.add(1);
         collection.add(3);
@@ -113,7 +113,7 @@ class MySetTest {
     }
 
     @Test
-    void shouldNotRemoveItemsNotPresentOnList() {
+    void naoDeveriaRemoverItensNaoPresentesNaLista() {
         MySet<Integer> collection = new MySet<>();
         collection.add(100);
 
@@ -122,7 +122,7 @@ class MySetTest {
     }
 
     @Test
-    void shouldRetainAllIntersectionNonEmpty() {
+    void deveriaReterTodaInterseccaoNaoVazia() {
         MySet<Integer> toRetain = new MySet<>();
         toRetain.add(1);
         toRetain.add(3);
@@ -133,7 +133,7 @@ class MySetTest {
     }
 
     @Test
-    void shouldRetainAllEmptySet() {
+    void deveriaReterTodoConjuntoVazio() {
         MySet<Integer> emptySet = new MySet<>();
 
         assertTrue(mySet.retainAll(emptySet));
@@ -141,7 +141,7 @@ class MySetTest {
     }
 
     @Test
-    void shouldConvertToArrayCorrectly() {
+    void deveriaConverterParaArrayCorretamente() {
         Object[] array = mySet.toArray();
 
         assertEquals(mySet.size(), array.length);
@@ -152,7 +152,7 @@ class MySetTest {
     }
 
     @Test
-    void shouldConvertToArrayCorrectlyWithInsuficientSize() {
+    void deveriaConverterParaArrayCorretamenteComTamanhoInsuficiente() {
         Object[] array = new Object[2];
         array = mySet.toArray(array);
 
@@ -164,7 +164,7 @@ class MySetTest {
     }
 
     @Test
-    void shouldConvertToArrayCorrectlyWithMoreThanSuficientSize() {
+    void deveriaConverterParaArrayCorretamenteComTamanhoMaiorQueSuficiente() {
         Object[] array = new Object[20];
         array = mySet.toArray(array);
 
@@ -176,7 +176,7 @@ class MySetTest {
     }
 
     @Test
-    void shouldReturnEmptyArrayForEmptySet() {
+    void deveriaRetornarArrayVazioParaConjuntoVazio() {
         mySet.clear();
         Object[] array = mySet.toArray();
 

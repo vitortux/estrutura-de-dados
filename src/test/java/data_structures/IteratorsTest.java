@@ -39,13 +39,13 @@ class IteratorsTest {
     }
 
     @Test
-    void shouldHaveNext() {
+    void deveriaTerProximoElemento() {
         assertTrue(myListIterator.hasNext());
         assertTrue(mySetIterator.hasNext());
     }
 
     @Test
-    void shouldReturnNextElement() {
+    void deveriaRetornarProximoElemento() {
         Model model = myListIterator.next();
         Integer integer = mySetIterator.next();
 
@@ -56,7 +56,7 @@ class IteratorsTest {
     }
 
     @Test
-    void shouldNotHaveNext() {
+    void naoDeveriaTerProximoElemento() {
         myList.clear();
         mySet.clear();
 
@@ -65,7 +65,7 @@ class IteratorsTest {
     }
 
     @Test
-    void shouldNotReturnNext() {
+    void naoDeveriaRetornarProximoElemento() {
         myList.clear();
         mySet.clear();
 

@@ -26,58 +26,58 @@ class MyListTest {
     }
 
     @Test
-    void shouldAddElement() {
+    void deveriaAdicionarElemento() {
         Model model = new Model(123);
         myList.add(model);
         assertTrue(myList.contains(model));
     }
 
     @Test
-    void shouldGrowWhenReachingDefaultCapacity() {
+    void deveriaCrescerAoAlcançarCapacidadePadrao() {
         myList.add(new Model(123));
         assertEquals(11, myList.size());
     }
 
     @Test
-    void currentListShouldNotBeEmpty() {
+    void aListaNaoDeveriaEstarVazia() {
         assertFalse(myList.isEmpty());
     }
 
     @Test
-    void shouldClearList() {
+    void deveriaLimparLista() {
         myList.clear();
         assertEquals(0, myList.size());
         assertTrue(myList.isEmpty());
     }
 
     @Test
-    void shouldRemoveNullObject() {
+    void deveriaRemoverObjetoNulo() {
         myList.add(null);
         assertTrue(myList.remove(null));
     }
 
     @Test
-    void shouldRemoveObject() {
+    void deveriaRemoverObjeto() {
         Model model = new Model(123);
         myList.add(model);
         assertTrue(myList.remove(model));
     }
 
     @Test
-    void shoudNotRemoveObjectNotInList() {
+    void naoDeveriaRemoverObjetoNaoPresenteNaLista() {
         assertFalse(myList.remove(null));
         assertFalse(myList.remove(new Model(123)));
     }
 
     @Test
-    void shouldSetNewValueForIndex() {
+    void deveriaDefinirNovoValorParaIndice() {
         Model newModel = new Model(123);
         Model oldModel = (Model) myList.set(0, newModel);
         assertNotEquals(myList.get(0), oldModel);
     }
 
     @Test
-    void shouldReturnTrueWhenAllElementsArePresent() {
+    void deveriaRetornarVerdadeiroQuandoTodosElementosEstiveremPresentes() {
         MyList<Model> collection = new MyList<>();
         collection.add(new Model(1));
         collection.add(new Model(2));
@@ -86,7 +86,7 @@ class MyListTest {
     }
 
     @Test
-    void shouldReturnFalseWhenNotAllElementsArePresent() {
+    void deveriaRetornarFalsoQuandoNemTodosElementosEstiveremPresentes() {
         MyList<Model> collection = new MyList<>();
         collection.add(new Model(11));
         collection.add(new Model(22));
@@ -95,7 +95,7 @@ class MyListTest {
     }
 
     @Test
-    void shouldAddAllElementsToMyList() {
+    void deveriaAdicionarTodosElementosNaLista() {
         MyList<Model> collection = new MyList<>();
         collection.add(new Model(12));
         collection.add(new Model(22));
@@ -107,7 +107,7 @@ class MyListTest {
     }
 
     @Test
-    void shouldAddDuplicateElements() {
+    void deveriaAdicionarElementosDuplicados() {
         MyList<Model> collection = new MyList<>();
         collection.add(new Model(1));
         collection.add(new Model(22));
@@ -117,7 +117,7 @@ class MyListTest {
     }
 
     @Test
-    void shouldRemoveAllItemsPresentOnList() {
+    void deveriaRemoverTodosItensPresentesNaLista() {
         MyList<Model> collection = new MyList<>();
         collection.add(new Model(1));
         collection.add(new Model(3));
@@ -127,7 +127,7 @@ class MyListTest {
     }
 
     @Test
-    void shouldNotRemoveItemsNotPresentOnList() {
+    void naoDeveriaRemoverItensNaoPresentesNaLista() {
         MyList<Model> collection = new MyList<>();
         collection.add(new Model(100));
 
@@ -136,13 +136,13 @@ class MyListTest {
     }
 
     @Test
-    void shouldGenerateSubListValidRange() {
+    void deveriaGerarSubListaComIntervaloValido() {
         MyList<Model> subList = myList.subList(2, 5);
         assertTrue(myList.containsAll(subList));
     }
 
     @Test
-    void shouldAddAtIndex() {
+    void deveriaAdicionarNoIndice() {
         Model newModel = new Model(100);
         myList.add(5, newModel);
 
@@ -154,7 +154,7 @@ class MyListTest {
     }
 
     @Test
-    void shouldInsertAtIndexOnEmptyList() {
+    void deveriaInserirNoIndiceEmListaVazia() {
         myList.clear();
         Model newModel = new Model(100);
         myList.add(5, newModel);
@@ -165,7 +165,7 @@ class MyListTest {
     }
 
     @Test
-    void shouldConvertToArrayCorrectly() {
+    void deveriaConverterParaArrayCorretamente() {
         Object[] array = myList.toArray();
 
         assertEquals(myList.size(), array.length);
@@ -176,7 +176,7 @@ class MyListTest {
     }
 
     @Test
-    void shouldAddCollectionOnEmptyList() {
+    void deveriaAdicionarColecaoEmListaVazia() {
         MyList<Model> toAdd = new MyList<>();
         toAdd.add(new Model(100));
         toAdd.add(new Model(101));
@@ -190,7 +190,7 @@ class MyListTest {
     }
 
     @Test
-    void shouldAddElementsAtMiddle() {
+    void deveriaAdicionarElementosNoMeio() {
         MyList<Model> toAdd = new MyList<>();
         toAdd.add(new Model(100));
         toAdd.add(new Model(101));
@@ -202,7 +202,7 @@ class MyListTest {
     }
 
     @Test
-    void shouldReturnFalseWhenAddingEmptyList() {
+    void deveriaRetornarFalsoAoAdicionarListaVazia() {
         MyList<Model> emptyList = new MyList<>();
 
         boolean result = myList.addAll(3, emptyList);
@@ -212,7 +212,7 @@ class MyListTest {
     }
 
     @Test
-    void shouldReturnFalseWhenAddingNullList() {
+    void deveriaRetornarFalsoAoAdicionarListaNula() {
         boolean result = myList.addAll(3, null);
 
         assertFalse(result);
@@ -220,7 +220,7 @@ class MyListTest {
     }
 
     @Test
-    void shouldReturnIndexOfNullElementPresent() {
+    void deveriaRetornarIndiceDoElementoNuloPresente() {
         myList.add(null);
 
         int index = myList.indexOf(null);
@@ -228,13 +228,13 @@ class MyListTest {
     }
 
     @Test
-    void shouldReturnIndexOfNullElementAbsent() {
+    void deveriaRetornarIndiceDoElementoNuloAusente() {
         int index = myList.indexOf(null);
         assertEquals(-1, index);
     }
 
     @Test
-    void shouldRetainAllIntersectionNonEmpty() {
+    void deveriaManterTodaInterseccaoNaoVazia() {
         MyList<Model> toRetain = new MyList<>();
         toRetain.add(new Model(1));
         toRetain.add(new Model(3));
@@ -245,7 +245,7 @@ class MyListTest {
     }
 
     @Test
-    void shouldRetainAllEmptyList() {
+    void deveriaManterTodaListaVazia() {
         MyList<Model> emptyList = new MyList<>();
 
         assertTrue(myList.retainAll(emptyList));
@@ -253,7 +253,7 @@ class MyListTest {
     }
 
     @Test
-    void shouldReturnLastIndexOfElementPresentMultipleTimes() {
+    void deveriaRetornarUltimoIndiceDoElementoPresenteMultiplaVezes() {
         Model modelToFind = new Model(2);
         myList.add(modelToFind);
         assertEquals(10, myList.lastIndexOf(modelToFind));
@@ -261,24 +261,24 @@ class MyListTest {
     }
 
     @Test
-    void shouldReturnMinusOneForLastIndexOnNotPresentElement() {
+    void deveriaRetornarMenosUmParaUltimoIndiceDeElementoNaoPresente() {
         assertEquals(-1, myList.lastIndexOf(null));
     }
 
     @Test
-    void testLastIndexOfNull() {
+    void deveriaRetornarUltimoIndiceDeElementoNulo() {
         myList.add(null);
         assertEquals(10, myList.lastIndexOf(null));
     }
 
     @Test
-    void shoulReturnMinusOneForLastIndexOnEmptyList() {
+    void deveriaRetornarMenosUmParaUltimoIndiceEmListaVazia() {
         myList.clear();
         assertEquals(-1, myList.lastIndexOf(new Model(1)));
     }
 
     @Test
-    void shouldReturnMinusOneForNotPresentElement() {
+    void deveriaRetornarMenosUmParaElementoNaoPresente() {
         assertEquals(-1, myList.lastIndexOf(new Model(100)));
     }
 }

@@ -27,37 +27,37 @@ class MyMapTest {
     }
 
     @Test
-    void shouldReturnFalseForEmptyList() {
+    void deveriaRetornarFalsoParaListaVazia() {
         assertFalse(myMap.isEmpty());
     }
 
     @Test
-    void shouldClearMap() {
+    void deveriaLimparMapa() {
         myMap.clear();
         assertTrue(myMap.isEmpty());
         assertEquals(0, myMap.size());
     }
 
     @Test
-    void shouldReplaceValueForExistingKey() {
+    void deveriaSubstituirValorParaChaveExistente() {
         Object c = myMap.put(1, 'c');
         assertNotNull(c);
         assertTrue(myMap.containsValue('c'));
     }
 
     @Test
-    void shouldReturnNullValueForNonExistingKey() {
+    void deveriaRetornarValorNuloParaChaveNaoExistente() {
         assertFalse(myMap.containsValue('l'));
     }
 
     @Test
-    void shouldReturnNullWhenPuttingNullKey() {
+    void deveriaRetornarNuloAoInserirChaveNula() {
         assertNull(myMap.put(null, 'l'));
         assertFalse(myMap.containsValue('l'));
     }
 
     @Test
-    void shouldIncreaseListSizeOnLimit() {
+    void deveriaAumentarTamanhoDoMapaAoAlcançarLimite() {
         assertEquals(10, myMap.size());
         assertNull(myMap.put(11, 'c'));
         assertEquals(11, myMap.size());
@@ -65,24 +65,24 @@ class MyMapTest {
     }
 
     @Test
-    void shouldReturnElementPresentOnMap() {
+    void deveriaRetornarElementoPresenteNoMapa() {
         Object c = myMap.get(1);
         assertNotNull(c);
         assertEquals('b', c);
     }
 
     @Test
-    void shouldReturnNullForElementNotOnMap() {
+    void deveriaRetornarNuloParaElementoNaoPresenteNoMapa() {
         assertNull(myMap.get(11));
     }
 
     @Test
-    void shouldNotContainKey() {
+    void naoDeveriaConterChave() {
         assertFalse(myMap.containsKey(11));
     }
 
     @Test
-    void shouldPutElementsFromAnotherMap() {
+    void deveriaAdicionarElementosDeOutroMapa() {
         assertEquals(10, myMap.size());
 
         MyMap<Integer, Character> mapToPut = new MyMap<>();
@@ -96,7 +96,7 @@ class MyMapTest {
     }
 
     @Test
-    void shouldRemoveExistingKey() {
+    void deveriaRemoverChaveExistente() {
         Object removedValue = myMap.remove(2);
 
         assertEquals('c', removedValue);
@@ -105,7 +105,7 @@ class MyMapTest {
     }
 
     @Test
-    void shouldNotRemoveNonExistingKey() {
+    void naoDeveriaRemoverChaveNaoExistente() {
         Object removedValue = myMap.remove(11);
 
         assertNull(removedValue);
@@ -113,7 +113,7 @@ class MyMapTest {
     }
 
     @Test
-    void shouldGenerateSetKey() {
+    void deveriaGerarConjuntoDeChaves() {
         Set<Integer> keySet = myMap.keySet();
 
         assertTrue(keySet.contains(1));
@@ -124,14 +124,14 @@ class MyMapTest {
     }
 
     @Test
-    void shouldGenerateEntryMap() {
+    void deveriaGerarConjuntoDeEntradasDoMapa() {
         Set<MyMap.Entry<Integer, String>> entrySet = myMap.entrySet();
         assertNotNull(entrySet);
         assertEquals(entrySet.size(), myMap.size());
     }
 
     @Test
-    void generatedSetShouldBeEmpty() {
+    void conjuntoGeradoDeveriaEstarVazio() {
         myMap.clear();
 
         Set<MyMap.Entry<Integer, String>> entrySet = myMap.entrySet();
@@ -141,7 +141,7 @@ class MyMapTest {
     }
 
     @Test
-    void shouldReturnEmptyValuesArray() {
+    void deveriaRetornarArrayDeValoresVazio() {
         myMap.clear();
 
         Object[] values = myMap.values();
@@ -151,7 +151,7 @@ class MyMapTest {
     }
 
     @Test
-    void shouldReturnValuesArray() {
+    void deveriaRetornarArrayDeValores() {
         Object[] values = myMap.values();
 
         assertNotNull(values);

@@ -8,9 +8,9 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import org.junit.jupiter.api.Test;
 
-import vitor.dev.my_arrays.PessoaArray;
 import vitor.dev.model.Model;
 import vitor.dev.model.Pessoa;
+import vitor.dev.my_arrays.PessoaArray;
 
 class PessoaArrayTest {
 	private final PessoaArray array = new PessoaArray(10);
@@ -18,19 +18,19 @@ class PessoaArrayTest {
 	private final Model model = new Model(2);
 
 	@Test
-	void shouldInsertPerson() {
+	void deveriaInserirPessoa() {
 		array.insert(0, pessoa);
 		assertNotNull(array.getItems()[0]);
 	}
 
 	@Test
-	void shouldNotInsertIncorrectModel() {
+	void naoDeveriaInserirModeloIncorreto() {
 		array.insert(0, model);
 		assertNull(array.getItems()[0]);
 	}
 
 	@Test
-	void shouldRemovePerson() {
+	void deveriaRemoverPessoa() {
 		array.insert(0, pessoa);
 		assertTrue(array.search(pessoa));
 
@@ -40,45 +40,45 @@ class PessoaArrayTest {
 	}
 
 	@Test
-	void shouldNotRemoveObjectNotPresentInArray() {
+	void naoDeveriaRemoverObjetoNaoPresenteNoArray() {
 		assertFalse(array.remove(pessoa));
 	}
 
 	@Test
-	void shouldNotRemoveIncorrectModel() {
+	void naoDeveriaRemoverModeloIncorreto() {
 		assertFalse(array.remove(model));
 	}
 
 	@Test
-	void shouldReturnTrueForModelPresentInArray() {
+	void deveriaRetornarVerdadeiroParaModeloPresenteNoArray() {
 		array.insert(0, pessoa);
 		assertTrue(array.search(pessoa));
 	}
 
 	@Test
-	void shouldReturnFalseForModelNotPresentInArray() {
+	void deveriaRetornarFalsoParaModeloNaoPresenteNoArray() {
 		assertFalse(array.search(pessoa));
 	}
 
 	@Test
-	void shouldReturnFalseWhenSearchingForIncorrectModelType() {
+	void deveriaRetornarFalsoAoBuscarTipoDeModeloIncorreto() {
 		assertFalse(array.search(model));
 	}
 
 	@Test
-	void shouldReturnTrueForUpdatedPerson() {
+	void deveriaRetornarVerdadeiroParaPessoaAtualizada() {
 		array.insert(0, pessoa);
 		assertTrue(array.update(0, new Pessoa(22, "name")));
 		assertNotEquals(pessoa, array.getItems()[0]);
 	}
 
 	@Test
-	void shouldReturnFalseWhenUpdatingModelNotPresentOnArray() {
+	void deveriaRetornarFalsoAoAtualizarModeloNaoPresenteNoArray() {
 		assertFalse(array.update(0, pessoa));
 	}
 
 	@Test
-	void shouldReturnFalseWhenUpdatingIncorrectModelType() {
+	void deveriaRetornarFalsoAoAtualizarTipoDeModeloIncorreto() {
 		assertFalse(array.update(0, model));
 	}
 }
