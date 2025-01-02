@@ -9,36 +9,22 @@ public class PessoaArray extends MyArray {
 	}
 
 	@Override
-	public void insert(int position, Model model) {
-		if (model instanceof Pessoa) {
-			super.insert(position, model);
-		}
+	public boolean insert(Model model) {
+		return model instanceof Pessoa && super.insert(model);
 	}
 
 	@Override
 	public boolean remove(Model model) {
-		if (model instanceof Pessoa) {
-			return super.remove(model);
-		}
-
-		return false;
+		return model instanceof Pessoa && super.remove(model);
 	}
 
 	@Override
 	public boolean search(Model model) {
-		if (model instanceof Pessoa) {
-			return super.search(model);
-		}
-
-		return false;
+		return model instanceof Pessoa && super.search(model);
 	}
 
 	@Override
-	public boolean update(int position, Model model) {
-		if (model instanceof Pessoa) {
-			return super.update(position, model);
-		}
-
-		return false;
+	public boolean update(Model model, Model newModel) {
+		return model instanceof Pessoa && super.update(model, newModel);
 	}
 }

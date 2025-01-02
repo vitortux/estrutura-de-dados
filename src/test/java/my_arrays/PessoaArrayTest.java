@@ -19,19 +19,19 @@ class PessoaArrayTest {
 
 	@Test
 	void deveriaInserirPessoa() {
-		array.insert(0, pessoa);
+		array.insert(pessoa);
 		assertNotNull(array.getItems()[0]);
 	}
 
 	@Test
 	void naoDeveriaInserirModeloIncorreto() {
-		array.insert(0, model);
+		array.insert(model);
 		assertNull(array.getItems()[0]);
 	}
 
 	@Test
 	void deveriaRemoverPessoa() {
-		array.insert(0, pessoa);
+		array.insert(pessoa);
 		assertTrue(array.search(pessoa));
 
 		array.remove(pessoa);
@@ -51,7 +51,7 @@ class PessoaArrayTest {
 
 	@Test
 	void deveriaRetornarVerdadeiroParaModeloPresenteNoArray() {
-		array.insert(0, pessoa);
+		array.insert(pessoa);
 		assertTrue(array.search(pessoa));
 	}
 
@@ -67,18 +67,18 @@ class PessoaArrayTest {
 
 	@Test
 	void deveriaRetornarVerdadeiroParaPessoaAtualizada() {
-		array.insert(0, pessoa);
-		assertTrue(array.update(0, new Pessoa(22, "name")));
+		array.insert(pessoa);
+		assertTrue(array.update(pessoa, new Pessoa(22, "name")));
 		assertNotEquals(pessoa, array.getItems()[0]);
 	}
 
 	@Test
 	void deveriaRetornarFalsoAoAtualizarModeloNaoPresenteNoArray() {
-		assertFalse(array.update(0, pessoa));
+		assertFalse(array.update(pessoa, new Pessoa(22, "douglas")));
 	}
 
 	@Test
 	void deveriaRetornarFalsoAoAtualizarTipoDeModeloIncorreto() {
-		assertFalse(array.update(0, model));
+		assertFalse(array.update(model, new Model(22)));
 	}
 }

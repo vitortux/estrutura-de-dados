@@ -5,30 +5,41 @@ import java.util.Random;
 import vitor.dev.model.Model;
 
 public class MyArray {
-	private Model[] items;
 	private Random random;
+	private Model[] items;
+	private int size;
 
 	public MyArray(int size) {
-		this.items = new Model[size];
 		this.random = new Random();
+		this.items = new Model[size];
+		this.size = 0;
 	}
 
 	public Model[] getItems() {
 		return items;
 	}
 
-	public void insert(int position, Model model) {
-		items[position] = model;
+	public boolean insert(Model model) {
+		if (size < items.length) {
+			items[size] = model;
+			size++;
+			return true;
+		}
+
+		return false;
 	}
 
 	public boolean remove(Model model) {
-		for (int i = 0; i < items.length; i++) {
-			if (items[i] == model) {
-				items[i] = null;
+		for (int i = 0; i < size; i++) {
+			if (items[i] != null && items[i].equals(model)) {
+				for (int j = i; j < size - 1; j++) {
+					items[j] = items[j + 1];
+				}
+				items[size - 1] = null;
+				size--;
 				return true;
 			}
 		}
-
 		return false;
 	}
 
@@ -66,10 +77,12 @@ public class MyArray {
 		}
 	}
 
-	public boolean update(int position, Model model) {
-		if (items[position] != null) {
-			items[position] = model;
-			return true;
+	public boolean update(Model model, Model newModel) {
+		for (int i = 0; i < size; i++) {
+			if (items[i] != null && items[i].equals(model)) {
+				items[i] = newModel;
+				return true;
+			}
 		}
 
 		return false;

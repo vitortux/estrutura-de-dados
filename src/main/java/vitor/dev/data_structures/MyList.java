@@ -78,6 +78,7 @@ public class MyList<T> implements Iterable<T> {
         if (size == items.length) {
             grow();
         }
+
         items[size++] = e;
         return true;
     }

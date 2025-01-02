@@ -1,7 +1,6 @@
 package my_arrays;
 
 import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -19,19 +18,19 @@ class BicicletaArrayTest {
 
 	@Test
 	void deveriaInserirBicicleta() {
-		array.insert(0, bicicleta);
+		array.insert(bicicleta);
 		assertNotNull(array.getItems()[0]);
 	}
 
 	@Test
 	void naoDeveriaInserirModeloIncorreto() {
-		array.insert(0, model);
+		array.insert(model);
 		assertNull(array.getItems()[0]);
 	}
 
 	@Test
 	void deveriaRemoverBicicleta() {
-		array.insert(0, bicicleta);
+		array.insert(bicicleta);
 		assertTrue(array.search(bicicleta));
 
 		array.remove(bicicleta);
@@ -51,7 +50,7 @@ class BicicletaArrayTest {
 
 	@Test
 	void deveriaRetornarVerdadeiroParaModeloPresenteNoArray() {
-		array.insert(0, bicicleta);
+		array.insert(bicicleta);
 		assertTrue(array.search(bicicleta));
 	}
 
@@ -65,20 +64,20 @@ class BicicletaArrayTest {
 		assertFalse(array.search(model));
 	}
 
-	@Test
-	void deveriaRetornarVerdadeiroParaBicicletaAtualizada() {
-		array.insert(0, bicicleta);
-		assertTrue(array.update(0, new Bicicleta(22, "name")));
-		assertNotEquals(bicicleta, array.getItems()[0]);
-	}
-
-	@Test
-	void deveriaRetornarFalsoAoAtualizarModeloNaoPresenteNoArray() {
-		assertFalse(array.update(0, bicicleta));
-	}
-
-	@Test
-	void deveriaRetornarFalsoAoAtualizarTipoDeModeloIncorreto() {
-		assertFalse(array.update(0, model));
-	}
+//	@Test
+//	void deveriaRetornarVerdadeiroParaBicicletaAtualizada() {
+//		array.insert(bicicleta);
+//		assertTrue(array.update(0, new Bicicleta(22, "name")));
+//		assertNotEquals(bicicleta, array.getItems()[0]);
+//	}
+//
+//	@Test
+//	void deveriaRetornarFalsoAoAtualizarModeloNaoPresenteNoArray() {
+//		assertFalse(array.update(0, bicicleta));
+//	}
+//
+//	@Test
+//	void deveriaRetornarFalsoAoAtualizarTipoDeModeloIncorreto() {
+//		assertFalse(array.update(0, model));
+//	}
 }

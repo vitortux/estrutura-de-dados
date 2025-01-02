@@ -20,9 +20,9 @@ class ArrayTest {
 	@BeforeEach
 	void setUp() {
 		for (int i = 0; i < array.getItems().length; i++) {
-			array.insert(i, new Model(i));
-			ascArray.insert(i, new Model(i));
-			descArray.insert(i, new Model(9 - i));
+			array.insert(new Model(i));
+			ascArray.insert(new Model(i));
+			descArray.insert(new Model(9 - i));
 		}
 	}
 
