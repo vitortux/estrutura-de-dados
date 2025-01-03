@@ -1,10 +1,12 @@
 package vitor.dev.model;
 
 public class Bicicleta extends Model {
-	String name;
+	String tipo;
+	int marchas;
+	boolean temRodinha;
 
-	public Bicicleta(int id, String name) {
+	public Bicicleta(int id, String tipo) {
 		super(id);
-		this.name = name;
+		this.tipo = tipo;
 	}
 }
