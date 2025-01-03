@@ -1,5 +1,6 @@
 package vitor.dev.my_arrays;
 
+import vitor.dev.exception.DataStructureException;
 import vitor.dev.model.Bicicleta;
 import vitor.dev.model.Model;
 
@@ -9,11 +10,12 @@ public class BicicletaArray extends MyArray {
 	}
 
 	@Override
-	public boolean insert(Model model) {
+	public void insert(Model model) {
 		try {
-			return model instanceof Bicicleta && super.insert(model);
+			if (model instanceof Bicicleta)
+				super.insert(model);
 		} catch (Exception e) {
-			return false;
+			throw new DataStructureException("Não foi possível inserir o Model no array: " + e.getMessage());
 		}
 	}
 

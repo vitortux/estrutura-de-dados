@@ -24,7 +24,7 @@ public class MyMap<K, V> {
 
     void grow() {
         int newLength = entries.length + 1;
-        Entry<K, V>[] newEntries = (Entry<K, V>[]) new Entry[newLength];
+        Entry<K, V>[] newEntries = new Entry[newLength];
 
         for (int i = 0; i < size; i++) {
             newEntries[i] = entries[i];

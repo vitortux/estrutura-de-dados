@@ -9,9 +9,9 @@ public class MyArray {
 	private Model[] items;
 	private int size;
 
-	public MyArray(int size) {
+	public MyArray(int length) {
 		this.random = new Random();
-		this.items = new Model[size];
+		this.items = new Model[length];
 		this.size = 0;
 	}
 
@@ -19,27 +19,24 @@ public class MyArray {
 		return items;
 	}
 
-	public boolean insert(Model model) {
-		if (size < items.length) {
-			items[size] = model;
-			size++;
-			return true;
-		}
-
-		return false;
+	public void insert(Model model) {
+		items[size] = model;
+		size++;
 	}
 
 	public boolean remove(Model model) {
 		for (int i = 0; i < size; i++) {
-			if (items[i] != null && items[i].equals(model)) {
+			if (items[i].equals(model)) {
 				for (int j = i; j < size - 1; j++) {
 					items[j] = items[j + 1];
 				}
+
 				items[size - 1] = null;
 				size--;
 				return true;
 			}
 		}
+
 		return false;
 	}
 
@@ -79,7 +76,7 @@ public class MyArray {
 
 	public boolean update(Model model, Model newModel) {
 		for (int i = 0; i < size; i++) {
-			if (items[i] != null && items[i].equals(model)) {
+			if (items[i].equals(model)) {
 				items[i] = newModel;
 				return true;
 			}

@@ -112,7 +112,7 @@ public class MySet<T> implements Iterable<T> {
         return false;
     }
 
-    public boolean containsAll(MySet c) {
+    public boolean containsAll(MySet<T> c) {
         for (Object item : c) {
             if (!contains(item)) {
                 return false;
@@ -134,7 +134,7 @@ public class MySet<T> implements Iterable<T> {
         return added;
     }
 
-    public boolean retainAll(MySet c) {
+    public boolean retainAll(MySet<T> c) {
         boolean removed = false;
 
         for (int i = size - 1; i >= 0; i--) {
@@ -149,7 +149,7 @@ public class MySet<T> implements Iterable<T> {
         return removed;
     }
 
-    public boolean removeAll(MySet c) {
+    public boolean removeAll(MySet<T> c) {
         boolean removed = false;
 
         for (Object item : c) {
