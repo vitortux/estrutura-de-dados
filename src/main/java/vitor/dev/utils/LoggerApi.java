@@ -6,6 +6,9 @@ import org.slf4j.LoggerFactory;
 public class LoggerApi {
 	private static final Logger LOGGER = LoggerFactory.getLogger(LoggerApi.class);
 
+	private LoggerApi() {
+	}
+
 	public static void info(String info) {
 		LOGGER.info(info);
 	}
